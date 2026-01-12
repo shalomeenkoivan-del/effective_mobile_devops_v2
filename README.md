@@ -14,24 +14,24 @@ mv .env.example .env
 - Запустите наш "министек" в фоне:
 docker-compose -d up
 
-[text](/images/1.png)
+![text](images/1.png)
 
 ## Как проверить результат
 
 - Проверьте, что контейнеры запустились успешно и работают:
 docker-compose ps
 
-[text](/images/2.png)
+![text](images/2.png)
 
-- Проверьте доступность через Nginx (ожидаемый вывод -  <h1>Hello from Effective Mobile!</h1>):
+- Проверьте доступность через Nginx (ожидаемый вывод - "Hello from Effective Mobile!"):
 curl localhost 
 
-[text](/images/3.png)
+![text](images/3.png)
 
 - Убедитесь, что бэкэнд скрыт, т.е. не доступен напрямую (ожидаемый вывод - Connection refused):
 curl http://localhost:8080
 
-[text](/images/4.png)
+![text](images/4.png)
 
 ## Как работает схема (nginx - backend)
 1. Мы заходим на localhost:80.
@@ -39,7 +39,7 @@ curl http://localhost:8080
 3. Nginx, согласно своему конфигу, все запросы / отправляет на сервис по имени backend.
 4. DNS докера по запросу Nginx'а на имя сервиса backend сообщает IP-адрес Flask-контейнера.
 5. Nginx отправляет запрос во внутреннюю сеть докера на backend:8080.
-6. Flask обрабатывает этот запрос и отвечает Nginx, возвращая "<h1>Hello from Effective Mobile!</h1>".
+6. Flask обрабатывает этот запрос и отвечает Nginx, возвращая "Hello from Effective Mobile!".
 7. Nginx передает этот ответ нам.
 
 Вывод: поулчается так, что мы общаемся с Nginx, а он с Flask'ом, прямой доступ к Flask-серверу заблокирован (то есть бэкэнд не доступен напрямую с хоста), и трафик идет только через Nginx.
