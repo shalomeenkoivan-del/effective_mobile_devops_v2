@@ -29,7 +29,7 @@ curl localhost
 ![text](images/3.png)
 
 - Убедитесь, что бэкэнд скрыт, т.е. не доступен напрямую (ожидаемый вывод - Connection refused):
-curl http://localhost:8080
+curl localhost:8080
 
 ![text](images/4.png)
 
@@ -48,4 +48,5 @@ curl http://localhost:8080
 - Python c фреймворком Flask для минимального backend с эндпойнтом /
 - Docker для изолированного запуска с установкой необходимых зависимостей (например, Flask)
 - Docker-Compose с оркестрацией двух сервисов в одной сети
+
 - Reverse Proxy через Nginx с передачей заголовков
